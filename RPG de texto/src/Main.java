@@ -1,3 +1,8 @@
+import Personagens.Arqueiro;
+import Personagens.Guerreiro;
+import Personagens.Mago;
+import Personagens.Personagem;
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -23,6 +28,7 @@ public class Main {
                     [ 2 ] - Entrar
                     [ 3 ] - Sair
                     """);
+
             int opcaoEntrada = teclado.nextInt();
 
             if (opcaoEntrada == 1) {
@@ -50,21 +56,22 @@ public class Main {
                     """);
 
             int opcaoClasse = teclado.nextInt();
+
             if (opcaoClasse == 1) {
                 System.out.println("Você escolheu a classe Arqueiro!");
-                jogador = new Personagem.Arqueiro();
+                jogador = new Arqueiro();
                 jogador.classe = "Arqueiro";
                 jogador.nome = nomePersonagem;
                 validarAcao = true;
             } else if (opcaoClasse == 2) {
                 System.out.println("Você escolheu a classe Guerreiro!");
-                jogador = new Personagem.Guerreiro();
+                jogador = new Guerreiro();
                 jogador.classe = "Guerreiro";
                 jogador.nome = nomePersonagem;
                 validarAcao = true;
             } else if (opcaoClasse == 3) {
                 System.out.println("Você escolheu a classe Mago!");
-                jogador = new Personagem.Mago();
+                jogador = new Mago();
                 jogador.classe = "Mago";
                 jogador.nome = nomePersonagem;
                 validarAcao = true;
@@ -83,6 +90,7 @@ public class Main {
                         """);
 
                 int opcaoAcao = teclado.nextInt();
+
                 if (opcaoAcao == 1) {
                     System.out.println("Você treinou!");
                     jogador.xpAtual += 5;
@@ -93,9 +101,8 @@ public class Main {
                     System.out.println("""
                             Escolha a dungeon que deseja entrar:
                             [ 1 ] - Rato
-                            [ 2 ] - Goblin
-                            [ 3 ] - Orc
                             """);
+
                     int opcaoDungeon = teclado.nextInt();
 
                     if (opcaoDungeon == 1) {
@@ -103,19 +110,19 @@ public class Main {
                         monstros = new Monstros.Rato();
                         int quantidadeRatos = aleatorio.nextInt(5) + 1;
                         System.out.printf("\nVocê encontrou %d ratos!", quantidadeRatos);
-                    } else if (opcaoDungeon == 2) {
-
-                    } else if (opcaoDungeon == 3) {
-
                     } else {
-
+                        System.out.println("opção invalida!");
                     }
                 } else if (opcaoAcao == 4) {
                     System.out.printf("""
                             Nome: %s
                             Nível: %d
                             Classe: %s
-                            """, jogador.nome, jogador.nivel, jogador.classe);
+                            dano: %.0f
+                            defesa: %.0f
+                            vida: %.0f
+                            xp para proximo nivel: %.2f
+                            """, jogador.nome, jogador.nivel, jogador.classe, jogador.ataque, jogador.defesa, jogador.vida, jogador.xpNecessario);
                 } else {
                     System.out.println("Escreva uma opção válida!");
                     validarAcao = false;

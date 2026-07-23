@@ -1,3 +1,5 @@
+import Personagens.Personagem;
+
 public class Monstros extends Personagem {
     String nome;
     int dano;
@@ -11,5 +13,9 @@ public class Monstros extends Personagem {
             vida = 50;
             defesa = 3;
         }
+    }
+
+    public void darDanoNoPersonagem(int dano) {
+
     }
 }

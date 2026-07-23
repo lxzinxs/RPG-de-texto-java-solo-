@@ -1,9 +1,9 @@
 public class Personagem {
     String nome;
     String classe;
-    int ataque;
-    int defesa;
-    int vida;
+    double ataque;
+    double defesa;
+    double vida;
     int nivel = 1;
     double xpAtual = 0.0;
     double xpNecessario = 100;
@@ -38,9 +38,12 @@ public class Personagem {
     public void aumentarNivel() {
         if(xpAtual >= xpNecessario){
             System.out.println("Você upou de nível!");
-            nivel++;
             xpAtual -= xpNecessario;
             xpNecessario *= 2;
+            nivel++;
+            ataque *= 1.25;
+            defesa *= 1.25;
+            vida *= 1.25;
         }
     }
 }

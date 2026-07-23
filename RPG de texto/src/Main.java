@@ -1,9 +1,12 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
+        Random aleatorio = new Random();
         Personagem jogador = new Personagem();
+        Monstros monstros = new Monstros();
 
         boolean rodarMenu = true;
         boolean validarPersonagem = false;
@@ -22,7 +25,6 @@ public class Main {
                     """);
             int opcaoEntrada = teclado.nextInt();
 
-            //opções do menu
             if (opcaoEntrada == 1) {
                 System.out.println("Digite o nome do seu personagem: ");
                 nomePersonagem = teclado.next();
@@ -38,7 +40,6 @@ public class Main {
             }
         }
 
-        //rodar o programa
         while (validarPersonagem) {
             System.out.println("""
                     Escolha a classe que deseja:
@@ -71,8 +72,6 @@ public class Main {
                 System.out.println();
                 validarPersonagem = false;
             }
-            //teste
-            System.out.println("\nclasse: " + jogador.classe + "\nvida: " + jogador.vida + "\nnome: " + jogador.nome + "\nataque: " + jogador.ataque + "\ndefesa: " + jogador.defesa);
 
             while (validarAcao) {
                 System.out.println("""
@@ -80,7 +79,7 @@ public class Main {
                         [ 1 ] - Treinar
                         [ 2 ] - Aventurar
                         [ 3 ] - Ir para a dungeon
-                        [ 4 ] - Mostrar nível
+                        [ 4 ] - Mostrar status
                         """);
 
                 int opcaoAcao = teclado.nextInt();
@@ -91,9 +90,32 @@ public class Main {
                 } else if (opcaoAcao == 2) {
                     System.out.println("Você se aventurou!");
                 } else if (opcaoAcao == 3) {
-                    System.out.println("Você entrou na dungeon!");
+                    System.out.println("""
+                            Escolha a dungeon que deseja entrar:
+                            [ 1 ] - Rato
+                            [ 2 ] - Goblin
+                            [ 3 ] - Orc
+                            """);
+                    int opcaoDungeon = teclado.nextInt();
+
+                    if (opcaoDungeon == 1) {
+                        System.out.println("Você entrou na dungeon dos ratos!");
+                        monstros = new Monstros.Rato();
+                        int quantidadeRatos = aleatorio.nextInt(5) + 1;
+                        System.out.printf("\nVocê encontrou %d ratos!", quantidadeRatos);
+                    } else if (opcaoDungeon == 2) {
+
+                    } else if (opcaoDungeon == 3) {
+
+                    } else {
+
+                    }
                 } else if (opcaoAcao == 4) {
-                    System.out.println("Seu nível atual é: " + jogador.nivel);
+                    System.out.printf("""
+                            Nome: %s
+                            Nível: %d
+                            Classe: %s
+                            """, jogador.nome, jogador.nivel, jogador.classe);
                 } else {
                     System.out.println("Escreva uma opção válida!");
                     validarAcao = false;
@@ -102,4 +124,3 @@ public class Main {
         }
     }
 }
-

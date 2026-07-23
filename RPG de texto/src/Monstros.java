@@ -1,6 +1,15 @@
-public class Monstros {
+public class Monstros extends Personagem {
+    String nome;
     int dano;
-    int hp;
+    int vida;
     int defesa;
-    int nivel;
+
+    public static class Rato extends Monstros{
+        public Rato(){
+            nome = "rato";
+            dano = 5;
+            vida = 50;
+            defesa = 3;
+        }
+    }
 }
